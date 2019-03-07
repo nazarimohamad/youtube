@@ -17,6 +17,7 @@ class VideoCell: UICollectionViewCell {
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "amber-hear")
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -50,6 +51,7 @@ class VideoCell: UICollectionViewCell {
         return view
     }()
     
+    
 //    let statusBarBackgroundView: UIView = {
 //        let statusBar = UIView()
 //        statusBar.backgroundColor = UIColor.rgb(red: 230, green: 31, blue: 31)
@@ -64,6 +66,7 @@ class VideoCell: UICollectionViewCell {
         addSubview(subtitleTextView)
 //        addSubview(statusBarBackgroundView)
         
+  
         
 //
 //        addConstraintsWithFormat(format: "H:|[v0(20)]|", views: statusBarBackgroundView)
@@ -89,7 +92,7 @@ class VideoCell: UICollectionViewCell {
         addConstraint(NSLayoutConstraint(item: titleLable, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
         
         //top constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .top, relatedBy: .equal, toItem: titleLable, attribute: .bottom, multiplier: 1, constant: 8))
+        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .top, relatedBy: .equal, toItem: titleLable, attribute: .bottom, multiplier: 1, constant: 4))
         //left constraint
         addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8))
         //right constraint
