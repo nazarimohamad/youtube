@@ -1,92 +1,76 @@
 //
-//  ViewController.swift
+//  VideoCell.swift
 //  youtube
 //
-//  Created by Ryan Nazari on 3/6/19.
+//  Created by Ryan Nazari on 3/7/19.
 //  Copyright © 2019 Ryan Nazari. All rights reserved.
 //
 
 import UIKit
-
-class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        navigationItem.title = "home"
-        collectionView?.backgroundColor = UIColor.white
-        
-        collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "cellId")
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
-        
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-}
-
 
 class VideoCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
-
+    
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.blue
         imageView.image = UIImage(named: "amber-hear")
         return imageView
     }()
     
     let userProfileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.green
+        imageView.image = UIImage(named: "amber-hear")
+        imageView.layer.cornerRadius = 22
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
     let titleLable: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.purple
+        label.text = "Amber Heard new video"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let subtitleTextView: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = UIColor.red
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.text = "Amber hear is one of my favorite actress in the past few year ago"
+        textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
+        textView.textColor = UIColor.lightGray
         return textView
     }()
     
     let seperatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.blue
+        view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         return view
     }()
-
+    
+//    let statusBarBackgroundView: UIView = {
+//        let statusBar = UIView()
+//        statusBar.backgroundColor = UIColor.rgb(red: 230, green: 31, blue: 31)
+//        return statusBar
+//        }()
+    
     func setupViews(){
         addSubview(thumbnailImageView)
         addSubview(seperatorView)
         addSubview(userProfileImageView)
         addSubview(titleLable)
         addSubview(subtitleTextView)
+//        addSubview(statusBarBackgroundView)
         
         
-       addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: thumbnailImageView)
+//
+//        addConstraintsWithFormat(format: "H:|[v0(20)]|", views: statusBarBackgroundView)
+//        addConstraintsWithFormat(format: "V:|[v0(20)]|", views: statusBarBackgroundView)
+        
+        
+        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: thumbnailImageView)
         
         addConstraintsWithFormat(format: "H:|-16-[v0(44)]", views: userProfileImageView)
         
@@ -111,25 +95,11 @@ class VideoCell: UICollectionViewCell {
         //right constraint
         addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .right, relatedBy: .equal, toItem: thumbnailImageView, attribute: .right, multiplier: 1, constant: 0))
         //height constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
+        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 30))
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init coder has not been implemented")
-//        super.init(coder: aDecoder)
-    }
-}
-
-extension UIView {
-    func addConstraintsWithFormat(format: String, views: UIView...){
-        var viewsDictionary = [String: UIView]()
-        for (index, view) in views.enumerated() {
-            let key = "v\(index)"
-            view.translatesAutoresizingMaskIntoConstraints = false
-            viewsDictionary[key] = view
-        }
-        
-        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
     }
 }
