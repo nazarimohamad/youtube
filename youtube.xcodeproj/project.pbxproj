@@ -15,6 +15,7 @@
 		1212D1F92231473800757649 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212D1F82231473800757649 /* Extentions.swift */; };
 		1212D1FC223147CA00757649 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212D1FB223147CA00757649 /* VideoCell.swift */; };
 		1212D1FF2231610F00757649 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212D1FE2231610F00757649 /* MenuBar.swift */; };
+		1218AEE42232677800BB40F9 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1218AEE32232677800BB40F9 /* Video.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		1212D1F82231473800757649 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		1212D1FB223147CA00757649 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		1212D1FE2231610F00757649 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		1218AEE32232677800BB40F9 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				120E311A222FFD9500EA32E9 /* AppDelegate.swift */,
+				1218AEE22232675700BB40F9 /* Models */,
 				1212D1FA223147B600757649 /* View */,
 				1212D1FD2231480300757649 /* Controler */,
 				1212D1F72231471200757649 /* Helpers */,
@@ -95,6 +98,14 @@
 				120E311C222FFD9500EA32E9 /* HomeController.swift */,
 			);
 			path = Controler;
+			sourceTree = "<group>";
+		};
+		1218AEE22232675700BB40F9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1218AEE32232677800BB40F9 /* Video.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				120E311D222FFD9500EA32E9 /* HomeController.swift in Sources */,
+				1218AEE42232677800BB40F9 /* Video.swift in Sources */,
 				1212D1FC223147CA00757649 /* VideoCell.swift in Sources */,
 				120E311B222FFD9500EA32E9 /* AppDelegate.swift in Sources */,
 				1212D1F92231473800757649 /* Extentions.swift in Sources */,
