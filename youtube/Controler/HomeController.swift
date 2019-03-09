@@ -10,26 +10,6 @@ import UIKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-//    var videos: [Video] = {
-//        var kanyeChannel = Channel()
-//        kanyeChannel.name = "KanyeIsTheBestChannel"
-//        kanyeChannel.profileImageName = "amber-hear"
-//
-//        var blankSpaceVideo = Video()
-//        blankSpaceVideo.title = "amber heard - Blank Space"
-//        blankSpaceVideo.thumbnailImageName = "amber-hear"
-//        blankSpaceVideo.channel = kanyeChannel
-//        blankSpaceVideo.numberOfViews = 23932843093
-//
-//        var badBloodVideo = Video()
-//        badBloodVideo.title = "amber heard - Bad Blood featuring Kendrick Lamar"
-//        badBloodVideo.thumbnailImageName = "amber-hear"
-//        badBloodVideo.channel = kanyeChannel
-//        badBloodVideo.numberOfViews = 57989654934
-//
-//        return [blankSpaceVideo, badBloodVideo]
-//    }()
-    
     var videos: [Video]?
     
     func fetchVideo() {
@@ -101,10 +81,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationItem.rightBarButtonItems = [moreButton, searchBarButtonItem]
     }
     
+    let settingLuncher = SettingLuncher()
     @objc func handleMore() {
-        
+        //show setting
+        settingLuncher.showSetting()
     }
     
+
     @objc func handleSearch() {
         print(123)
     }
