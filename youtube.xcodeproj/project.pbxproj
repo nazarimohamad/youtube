@@ -17,6 +17,7 @@
 		1212D1FF2231610F00757649 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212D1FE2231610F00757649 /* MenuBar.swift */; };
 		1218AEE42232677800BB40F9 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1218AEE32232677800BB40F9 /* Video.swift */; };
 		12C41C20223407EF0044893B /* SettingLuncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C41C1F223407EF0044893B /* SettingLuncher.swift */; };
+		12C41C222234483E0044893B /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C41C212234483E0044893B /* SettingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1212D1FE2231610F00757649 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		1218AEE32232677800BB40F9 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		12C41C1F223407EF0044893B /* SettingLuncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLuncher.swift; sourceTree = "<group>"; };
+		12C41C212234483E0044893B /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				1212D1FB223147CA00757649 /* VideoCell.swift */,
 				1212D1FE2231610F00757649 /* MenuBar.swift */,
+				12C41C212234483E0044893B /* SettingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			files = (
 				120E311D222FFD9500EA32E9 /* HomeController.swift in Sources */,
 				12C41C20223407EF0044893B /* SettingLuncher.swift in Sources */,
+				12C41C222234483E0044893B /* SettingCell.swift in Sources */,
 				1218AEE42232677800BB40F9 /* Video.swift in Sources */,
 				1212D1FC223147CA00757649 /* VideoCell.swift in Sources */,
 				120E311B222FFD9500EA32E9 /* AppDelegate.swift in Sources */,

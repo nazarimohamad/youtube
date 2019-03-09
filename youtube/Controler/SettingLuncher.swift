@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingLuncher: NSObject {
+class SettingLuncher: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let blackView = UIView()
     let collectionView: UICollectionView = {
@@ -18,6 +18,7 @@ class SettingLuncher: NSObject {
         return cv
     }()
     
+    let cellId = "cellId"
     
     func showSetting() {
        
@@ -31,14 +32,14 @@ class SettingLuncher: NSObject {
             
             let height: CGFloat = 200
             let y = window.frame.height - 200
-            collectionView.frame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
+            collectionView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: window.frame.height)
             
             blackView.frame = window.frame
             blackView.alpha = 0
-            
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
-                self.collectionView.frame = CGRect(x: 0, y: y, width: window.frame.width, height: height)
+
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                 self.blackView.alpha = 1
+                self.collectionView.frame = CGRect(x: 0, y: y, width: window.frame.width, height: height)
             }, completion: nil)
         }
     }
@@ -53,7 +54,30 @@ class SettingLuncher: NSObject {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    
     override init() {
         super.init()
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        collectionView.register(SettingCell.self, forCellWithReuseIdentifier: cellId)
     }
 }
