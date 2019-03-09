@@ -30,6 +30,7 @@ class SettingLuncher: NSObject, UICollectionViewDataSource, UICollectionViewDele
     }()
     
     let cellId = "cellId"
+    let cellHeight: CGFloat = 50
     
     let settings: [Setting] = {
         return [Setting(name: "settings", imageName: "setting"),  Setting(name: "Terms and privacy policy", imageName: "privacy"),  Setting(name: "Send Feedback", imageName: "feedback"),  Setting(name: "Help", imageName: "help"),  Setting(name: "Switch account", imageName: "switch_account"),  Setting(name: "cancel", imageName: "cancel")]
@@ -45,8 +46,8 @@ class SettingLuncher: NSObject, UICollectionViewDataSource, UICollectionViewDele
             window.addSubview(blackView)
             window.addSubview(collectionView)
             
-            let height: CGFloat = 200
-            let y = window.frame.height - 200
+            let height: CGFloat = CGFloat(settings.count) * cellHeight
+            let y = window.frame.height - height
             collectionView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: window.frame.height)
             
             blackView.frame = window.frame
