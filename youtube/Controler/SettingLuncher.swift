@@ -10,13 +10,22 @@ import UIKit
 
 
 class Setting: NSObject {
-    let name: String
+    let name: SettingName
     let imageName: String
     
-    init(name: String, imageName: String) {
+    init(name: SettingName, imageName: String) {
         self.name = name
         self.imageName = imageName
     }
+}
+
+enum SettingName : String {
+    case Cancel = "cancel"
+    case Settings = "settings"
+    case PrivacyPolicy = "Terms & privacy policy"
+    case SendFeedback = "Send Feedback"
+    case Help = "Help"
+    case SwitchAccount = "Sweitch account"
 }
 
 class SettingLuncher: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -33,7 +42,9 @@ class SettingLuncher: NSObject, UICollectionViewDataSource, UICollectionViewDele
     let cellHeight: CGFloat = 50
     
     let settings: [Setting] = {
-        return [Setting(name: "settings", imageName: "settings"),  Setting(name: "Terms and privacy policy", imageName: "privacy"),  Setting(name: "Send Feedback", imageName: "feedback"),  Setting(name: "Help", imageName: "help"),  Setting(name: "Switch account", imageName: "switch_account"),  Setting(name: "cancel", imageName: "cancel")]
+        let Cancel = Setting(name: .Cancel, imageName: "cancel")
+        let Settings = Setting(name: .Settings, imageName: "settings")
+        return [Settings,  Setting(name: .PrivacyPolicy, imageName: "privacy"),  Setting(name: .SendFeedback, imageName: "feedback"),  Setting(name: .Help, imageName: "help"),  Setting(name: .SwitchAccount, imageName: "switch_account"),  Cancel]
     }()
     
     var homeController: HomeController?
@@ -73,7 +84,7 @@ class SettingLuncher: NSObject, UICollectionViewDataSource, UICollectionViewDele
             }
             
         }) { (true) in
-            if setting.name != "" && setting.name != "cancel" {
+            if setting.name != .Cancel {
                 self.homeController?.showControllerForSetting(setting: setting)
             }
         }
