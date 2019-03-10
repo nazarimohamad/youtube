@@ -16,7 +16,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let url = NSURL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json")
         URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
             if error != nil {
-                print(error)
+                print("there is error to fetching data\(String(describing: error))")
                 return
             }
             do {
@@ -38,8 +38,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     
                     self.videos?.append(video)
                 }
-                
-                self.collectionView.reloadData()
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
                 
             } catch let jsonError {
                 print(jsonError)
@@ -84,7 +85,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     let settingLuncher = SettingLuncher()
     @objc func handleMore() {
         //show setting
+        settingLuncher.homeController = self
         settingLuncher.showSetting()
+    }
+    
+    func showControllerForSetting(){
+        let dummySettingViewController = UIViewController()
+        navigationController?.pushViewController(dummySettingViewController, animated: true)
     }
     
 

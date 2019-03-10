@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
 
         UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 230, green: 32, blue: 31)
-        application.statusBarStyle = .lightContent
+//        application.statusBarStyle = .lightContent
         
         let statusBarBackgroundView: UIView = {
             let statusBar = UIView()

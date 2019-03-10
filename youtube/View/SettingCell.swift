@@ -11,7 +11,7 @@ import UIKit
 
 class SettingCell: BaseCell {
     
-    override var isHighlighted: Bool {
+    override var isHighlighted: Bool  {
         didSet {
             backgroundColor = isHighlighted ? UIColor.darkGray : UIColor.white
             nameLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
@@ -25,6 +25,7 @@ class SettingCell: BaseCell {
             nameLabel.text = setting?.name
             if let imageName = setting?.imageName {
                 iconImageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
+                iconImageView.tintColor = UIColor.darkGray
             }
         }
     }
@@ -40,7 +41,6 @@ class SettingCell: BaseCell {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "settings")
         imageView.contentMode = .scaleAspectFill
-        imageView.tintColor = UIColor.darkGray
         return imageView
     }()
     
@@ -52,7 +52,7 @@ class SettingCell: BaseCell {
         
         addConstraintsWithFormat(format: "H:|-8-[v0(30)]-8-[v1]|", views: iconImageView, nameLabel)
         addConstraintsWithFormat(format: "V:|[v0]|", views: nameLabel)
-        addConstraintsWithFormat(format: "V:|[v0(30)]|", views: iconImageView)
+        addConstraintsWithFormat(format: "V:[v0(30)]", views: iconImageView)
         addConstraint(NSLayoutConstraint(item: iconImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
         
     }
