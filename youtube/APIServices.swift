@@ -11,8 +11,23 @@ import UIKit
 class APIServices: NSObject {
     
     static let sharedInstance = APIServices()
-    func fetchVideos(completion: @escaping ([Video]) -> ()) {
-        let url = NSURL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json")
+    
+    let baseUrl = NSURL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets")!
+    
+    func fetchVideo(completion: @escaping ([Video]) -> ()) {
+        fetchFeedForUrlString(urlString: "\(baseUrl)/home.json", completion: completion)
+    }
+    
+    func fetchTrendingFeed(completion: @escaping ([Video]) -> ()) {
+        fetchFeedForUrlString(urlString: "\(baseUrl)/trending.json", completion: completion)
+    }
+    
+    func fetchSubscriptionFeed(completion: @escaping ([Video]) -> ()) {
+        fetchFeedForUrlString(urlString: "\(baseUrl)/subscriptions.json", completion: completion)
+    }
+    
+    func fetchFeedForUrlString(urlString: String, completion: @escaping ([Video]) -> ()) {
+        let url = NSURL(string: urlString )
         URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
             if error != nil {
                 print("there is error to fetching data\(String(describing: error))")
@@ -21,7 +36,7 @@ class APIServices: NSObject {
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
                 
-              var videos = [Video]()
+                var videos = [Video]()
                 for dictionary in json as! [[String: AnyObject]]{
                     
                     let video = Video()
@@ -35,7 +50,7 @@ class APIServices: NSObject {
                     channel.profileImageName = channelDictionary["profile_image_name"] as? String
                     video.channel = channel
                     
-                   videos.append(video)
+                    videos.append(video)
                 }
                 DispatchQueue.main.async {
                     completion(videos)

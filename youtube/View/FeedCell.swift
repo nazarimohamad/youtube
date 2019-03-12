@@ -23,7 +23,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     var videos: [Video]?
     
     func fetchVideo() {
-        APIServices.sharedInstance.fetchVideos { (videos) in
+        APIServices.sharedInstance.fetchVideo { (videos) in
             
             self.videos = videos
             self.collectionView.reloadData()
