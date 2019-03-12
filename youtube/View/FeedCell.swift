@@ -10,17 +10,6 @@ import UIKit
 
 class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    var videos: [Video]?
-    
-    func fetchVideo() {
-        APIServices.sharedInstance.fetchVideos { (videos) in
-            
-            self.videos = videos
-            self.collectionView.reloadData()
-        }
-    }
-    
-    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -31,6 +20,15 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     }()
     
     var cellId = "cellId"
+    var videos: [Video]?
+    
+    func fetchVideo() {
+        APIServices.sharedInstance.fetchVideos { (videos) in
+            
+            self.videos = videos
+            self.collectionView.reloadData()
+        }
+    }
     override func setupViews() {
         super.setupViews()
       

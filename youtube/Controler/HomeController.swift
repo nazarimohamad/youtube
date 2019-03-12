@@ -11,6 +11,8 @@ import UIKit
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     let cellId = "cellId"
+    let titles = ["Home", "Trending", "Subscriptions", "Account"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,6 +80,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func scrollToMenuIndex(menuIndex: Int) {
         let indexPath = NSIndexPath(item: menuIndex, section: 0)
         collectionView.scrollToItem(at: indexPath as IndexPath, at: .centeredHorizontally, animated: true)
+        setTitleForIndex(index: menuIndex)
+    }
+    
+    private func setTitleForIndex(index: Int) {
+        if let titleLabel = navigationItem.titleView as? UILabel {
+            titleLabel.text = "  \(titles[Int(index)])"
+        }
     }
     
     lazy var menuBar: MenuBar = {
@@ -111,6 +120,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let index = targetContentOffset.pointee.x / view.frame.width
         let indexPath = NSIndexPath(item: Int(index), section: 0) as IndexPath
         menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+        setTitleForIndex(index: Int(index))
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -124,7 +134,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
+        return CGSize(width: view.frame.width, height: view.frame.height - 50)
     }
     
 }
