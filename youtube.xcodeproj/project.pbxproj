@@ -17,6 +17,7 @@
 		1212D1FF2231610F00757649 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212D1FE2231610F00757649 /* MenuBar.swift */; };
 		1218AEE42232677800BB40F9 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1218AEE32232677800BB40F9 /* Video.swift */; };
 		121B949F223652050008E9B7 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121B949E223652050008E9B7 /* APIServices.swift */; };
+		12B4C76722379CE500CB1E9A /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B4C76622379CE500CB1E9A /* FeedCell.swift */; };
 		12C41C20223407EF0044893B /* SettingLuncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C41C1F223407EF0044893B /* SettingLuncher.swift */; };
 		12C41C222234483E0044893B /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C41C212234483E0044893B /* SettingCell.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		1212D1FE2231610F00757649 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		1218AEE32232677800BB40F9 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		121B949E223652050008E9B7 /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
+		12B4C76622379CE500CB1E9A /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		12C41C1F223407EF0044893B /* SettingLuncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLuncher.swift; sourceTree = "<group>"; };
 		12C41C212234483E0044893B /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 				1212D1FB223147CA00757649 /* VideoCell.swift */,
 				1212D1FE2231610F00757649 /* MenuBar.swift */,
 				12C41C212234483E0044893B /* SettingCell.swift */,
+				12B4C76622379CE500CB1E9A /* FeedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				120E311D222FFD9500EA32E9 /* HomeController.swift in Sources */,
+				12B4C76722379CE500CB1E9A /* FeedCell.swift in Sources */,
 				12C41C20223407EF0044893B /* SettingLuncher.swift in Sources */,
 				12C41C222234483E0044893B /* SettingCell.swift in Sources */,
 				1218AEE42232677800BB40F9 /* Video.swift in Sources */,
