@@ -59,6 +59,15 @@ class VideoPlayerView: UIView {
         return label
     }()
     
+    let currentTimeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "00:00"
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        return label
+    }()
+    
     lazy var videoSlider: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
@@ -85,6 +94,8 @@ class VideoPlayerView: UIView {
         super.init(frame: frame)
         setupPlayerView()
         
+        setupGradiantLayer()
+        
         controlContainerView.frame = frame
         addSubview(controlContainerView)
         controlContainerView.addSubview(activityIndicatorView)
@@ -99,13 +110,19 @@ class VideoPlayerView: UIView {
         pausePlayButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         controlContainerView.addSubview(videoLengthLabel)
-        videoLengthLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        videoLengthLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        videoLengthLabel.widthAnchor.constraint(equalToConstant: 60)
+        videoLengthLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: 8).isActive = true
+        videoLengthLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 2).isActive = true
+        videoLengthLabel.widthAnchor.constraint(equalToConstant: 50)
         videoLengthLabel.heightAnchor.constraint(equalToConstant: 24)
         
+        controlContainerView.addSubview(currentTimeLabel)
+        currentTimeLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8) .isActive = true
+        currentTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 2).isActive = true
+        currentTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        currentTimeLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
         controlContainerView.addSubview(videoSlider)
-        videoSlider.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        videoSlider.leftAnchor.constraint(equalTo: currentTimeLabel.rightAnchor).isActive = true
         videoSlider.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         videoSlider.rightAnchor.constraint(equalTo: videoLengthLabel.leftAnchor).isActive = true
         videoSlider.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -144,6 +161,14 @@ class VideoPlayerView: UIView {
                 videoLengthLabel.text = "\(minutText):\(secondText)"
             }
         }
+    }
+    
+    private func setupGradiantLayer() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradientLayer.locations = [0.7, 1.2]
+        controlContainerView.layer.addSublayer(gradientLayer)
     }
     
     required init?(coder aDecoder: NSCoder) {
