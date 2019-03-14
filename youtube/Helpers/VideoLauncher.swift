@@ -111,13 +111,13 @@ class VideoPlayerView: UIView {
         
         controlContainerView.addSubview(videoLengthLabel)
         videoLengthLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: 8).isActive = true
-        videoLengthLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 2).isActive = true
+        videoLengthLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2).isActive = true
         videoLengthLabel.widthAnchor.constraint(equalToConstant: 50)
         videoLengthLabel.heightAnchor.constraint(equalToConstant: 24)
         
         controlContainerView.addSubview(currentTimeLabel)
         currentTimeLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8) .isActive = true
-        currentTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 2).isActive = true
+        currentTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2).isActive = true
         currentTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         currentTimeLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
@@ -144,6 +144,23 @@ class VideoPlayerView: UIView {
             
             player?.play()
             player?.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
+            
+            //track player progress
+            let interval = CMTime(value: 1, timescale: 2)
+            player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { (progressTime) in
+                
+                let seconds = CMTimeGetSeconds(progressTime)
+                let secondString = String(format: "%02d", Int(seconds) % 60)
+                let minutString = String(format: "%02d", Int(seconds) / 60)
+                self.currentTimeLabel.text = "\(minutString):\(secondString)"
+                
+                //lets move the slider thumb
+                if let duration = self.player?.currentItem?.duration {
+                    let durationSeconds = CMTimeGetSeconds(duration)
+                    
+                    self.videoSlider.value = Float(seconds / durationSeconds)
+                }
+            })
         }
     }
     
